@@ -1,6 +1,7 @@
 import glob
 from collections import Counter
 from shift import decryptShift
+from sub import decryptSub
 from utils import *
 
 # TODO: Decrypt function (prompt the user for a preferred encryption schema otherwise start at the top)
@@ -15,10 +16,11 @@ def main():
     #files = glob.glob(r'C:/Users/Harry/Documents/GitHub/Cryptography-and-cyber-security/ciphertexts/*.txt')
     files = glob.glob('../ciphertexts/*.txt')
     for index, file in enumerate(files):
-        if index == 1:
+        if index == 0:
             ctext = open(file)
             ctext = ctext.read()
             ctext_length = len(ctext)
+            print(ctext)
 
             mono_count_dict = Counter(ctext)
             mono_freq_dict = {}
@@ -55,15 +57,19 @@ def main():
             print(mono_freq_dict)
             print("Digrams:")
             print(di_freq_dict)
+            print("Trigrams:")
+            print(tri_freq_dict)
             print("IC:\n%.3f" % IC, "({})".format(IC))
 
             #print("Select an encryption / decryption schema to try:\n")
             #decryption_schema = input("Enter 'shift', 'sub', 'vigen', 'perm', or 'one-time':")
 
-            
             type = detectType(mono_freq_dict, di_freq_dict)
+
             if type == 'shift':
                 decryptShift(ctext, mono_freq_dict)
+            elif type == 'sub':
+                decryptSub(ctext)
 
 
 

@@ -3,13 +3,12 @@ def detectType(monograms, digrams):
     print(keysArray)
 
     freqNum1 = charToNum(keysArray[0])
-    print(freqNum1)
     freqNum2 = charToNum(keysArray[1])
 
     if freqNum1 + 15 == freqNum2 or freqNum1 - 11 == freqNum2:
         return 'shift'
     else:
-        print("Not a shift")
+        return "sub"
     return
 
 
