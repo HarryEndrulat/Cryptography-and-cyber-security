@@ -16,4 +16,4 @@ def decryptShift(ctext, mono_freq_dict):
 
         pText += numToChar(pValue)
 
-    print(pText)
+    return pText

@@ -1,15 +1,28 @@
-def detectType(monograms, digrams):
+def getIC(mono_count_dict, length):
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    freq_sum = 0.0
+
+    for letter in alphabet:
+        # if letter in mono_count_dict:
+        freq_sum += mono_count_dict[letter] * (mono_count_dict[letter] - 1)
+    IC = freq_sum / (length * (length - 1))
+    return IC
+
+def detectType(monograms, digrams, IC):
     keysArray = list(monograms.keys())
     print(keysArray)
 
     freqNum1 = charToNum(keysArray[0])
     freqNum2 = charToNum(keysArray[1])
 
-    if freqNum1 + 15 == freqNum2 or freqNum1 - 11 == freqNum2:
-        return 'shift'
+    print(IC)
+    if IC > 0.058:
+        if freqNum1 + 15 == freqNum2 or freqNum1 - 11 == freqNum2:
+            return 'shift'
+        else:
+            return 'sub'
     else:
-        return "sub"
-    return
+        return 'vigen'
 
 
 def charToNum(character):

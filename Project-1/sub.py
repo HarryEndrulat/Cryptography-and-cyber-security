@@ -18,5 +18,4 @@ def decryptSub(ctext):
 		else:
 			ptext += char
 
-	print(ptext)
-	return
+	return ptext
