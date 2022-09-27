@@ -43,3 +43,4 @@ def decryptVigenere(ctext):
 				index += 1
 
 			return ptext
+	return "onetime"
